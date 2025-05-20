@@ -18,10 +18,10 @@ export default function login() {
 
   useEffect(() => {
 
-    if (!session?.user?.token) {
-      console.log("no session");
-      return;
-    }
+    // if (!session?.user?.token) {
+    //   console.log("no session");
+    //   // return;
+    // }
     const fetchData = async () => {
       try {
         if (session?.user?.token) {
@@ -29,6 +29,7 @@ export default function login() {
           if (!userData) {
             setUser(null);
           }
+          setUser(userData.data);
         }
       }
       catch (err) {
