@@ -9,14 +9,22 @@ export default function Home() {
   const [user, setUser] = useState<any>(null);
   const [role, setRole] = useState("");
 
-
+  // console.log(session?.user);
   useEffect(() => {
+    if (!session?.user?.token) {
+      console.log("no session");
+      return;
+    }
+    console.log("session.user:", session?.user);
     const fetchData = async () => {
       try {
+        console.log("here");
         if (session?.user?.token) {
           const userData = await getUserProfile(session.user.token);
+          console.log(userData.data.role);
           if (userData) {
-            setRole(user.data.role);
+            setUser(userData.data);
+            setRole(userData.data.role);
           } else {
             setUser(null);
           }
@@ -35,7 +43,7 @@ export default function Home() {
         <h1 className="mb-3 font-semibold text-6xl text-white">JIBTEA</h1>
         <h2 className="mb-3 font-serif text-l text-white">Car rental web page full-stack practice</h2>
         {
-          user != null ? (
+          user !== null ? (
             <div>
               <Link href="/providers">
                 <button className="font-serif text-white">CarProvider</button>

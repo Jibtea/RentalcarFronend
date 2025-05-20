@@ -13,7 +13,6 @@ export default async function userLogin(userEmail: string, userPassword: string)
         },
       }
     );
-
     return response.data;
   } catch (error: any) {
     throw new Error(error.response?.data?.message || "Failed to log in");
