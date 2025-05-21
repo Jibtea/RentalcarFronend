@@ -33,11 +33,27 @@ export default function register() {
     }
   };
 
+
+  const handleBack = async () => {
+    // e.preventDefault();
+    router.push('/');
+  }
   return (
     session?.user?.token ?
       <main className="flex items-center justify-center h-screen bg-black text-white">
-        <div>you already have account. please logout before register</div>
+        <div className="text-xl font-bold mb-2 text-center p-2">
+          you already have account. please logout before register
+        </div>
+
+        <button
+          onClick={handleBack}
+          disabled={loading}
+          className="max-w-md px-6 py-2 bg-purple-600 hover:bg-purple-700 transition rounded-lg font-semibold disabled:opacity-50"
+        >
+          Go To main menu
+        </button>
       </main>
+
       :
       <main className="flex items-center justify-center h-screen bg-black text-white">
         <div className="bg-gray-900 p-10 rounded-2xl shadow-xl w-full max-w-md">
