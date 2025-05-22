@@ -5,6 +5,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
 import getUserProfile from "@/libs/getUserProfile";
 import NextAuthProvider from "@/providers/NextAuthProvider";
+import LayoutWithUser from "@/component/layoutUser";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,7 +32,9 @@ export default async function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <NextAuthProvider>
-          {children}
+          <LayoutWithUser role={role} user={user} >
+            {children}
+          </LayoutWithUser>
         </NextAuthProvider>
       </body>
     </html>
