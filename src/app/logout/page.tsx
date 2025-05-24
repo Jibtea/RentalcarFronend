@@ -12,7 +12,9 @@ export default function LogoutPage() {
       await signOut({
         redirect: false, // ไม่ต้อง redirect อัตโนมัติ
       });
+
       router.push("/"); // หลัง logout แล้ว redirect ไปหน้าแรก
+      router.refresh(); // refresh page
     };
 
     doLogout();

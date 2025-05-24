@@ -51,12 +51,17 @@ export default function login() {
       email,
       password,
     });
+    console.log("SignIn result:", res);
+
 
     setLoading(false);
 
     if (res?.error) {
       setError("Invalid email or password");
+      // console.log(error);
+      // alert(error);
     } else {
+      console.log("login complete");
       alert("login complete");
       router.push("/");
       router.refresh();
@@ -85,6 +90,7 @@ export default function login() {
       </main>
 
       :
+
       <main className="flex items-center justify-center h-screen bg-black text-white">
         <div className="bg-gray-900 p-10 rounded-2xl shadow-xl w-full max-w-md">
           <h1 className="text-3xl font-bold mb-6 text-center">
